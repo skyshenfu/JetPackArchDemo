@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.zty.archdemo.ui.main.MainViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.zty.archdemo.ui.main.MainActivity">
+
+
+        <EditText
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/user_name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="用户名"
+            />
+        <EditText
+            app:layout_constraintTop_toBottomOf="@id/user_name_edit_text"
+            android:id="@+id/password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="密码"
+            />
+        <Button
+            app:layout_constraintTop_toBottomOf="@id/password_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:id="@+id/login_button"
+            android:enabled="@{viewModel.uiLiveData.enableLoginButton}"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
