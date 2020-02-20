@@ -9,8 +9,8 @@ package com.zty.common.base;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 
-import androidx.lifecycle.ViewModelProviders;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -35,7 +35,7 @@ public abstract class BaseVMActivity<VM extends BaseViewModel> extends  BaseActi
 
 
     private void initViewModel() {
-        mViewModel= (VM) ViewModelProviders.of(this).get(getResponseClass());
+        mViewModel= (VM) new ViewModelProvider(this).get(getResponseClass());
         if (mViewModel!=null){
          getLifecycle().addObserver(mViewModel);
         }

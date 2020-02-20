@@ -21,6 +21,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+
+        sourceCompatibility JavaVersion.VERSION_1_8
+
+        targetCompatibility JavaVersion.VERSION_1_8
+
+    }
 
 }
 
@@ -32,13 +42,15 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    api "android.arch.lifecycle:extensions:1.1.1"
-    api 'io.reactivex.rxjava3:rxjava:3.0.0-RC4'
-    api 'io.reactivex.rxjava3:rxandroid:3.0.0-SNAPSHOT'
+    api 'io.reactivex.rxjava3:rxjava:3.0.0'
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
-    api 'com.squareup.retrofit2:retrofit:2.6.2'
+    api 'com.squareup.retrofit2:retrofit:2.7.1'
     api "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0-RC4"
 
     api 'com.google.code.gson:gson:2.8.6'
+    api 'androidx.navigation:navigation-fragment:2.2.1'
+    api 'com.google.android.material:material:1.1.0'
+
 
 }

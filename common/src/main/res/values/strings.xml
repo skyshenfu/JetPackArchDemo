@@ -1,3 +1,5 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">common</string>
+    <dimen name="design_bottom_navigation_active_text_size"
+        tools:override="true">12sp</dimen>
 </resources>
