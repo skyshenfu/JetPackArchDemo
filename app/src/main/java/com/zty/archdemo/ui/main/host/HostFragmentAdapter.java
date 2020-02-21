@@ -1,33 +1,45 @@
 package com.zty.archdemo.ui.main.host;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.zty.archdemo.ui.main.home.HomeFragment;
+import com.zty.archdemo.ui.main.personal.PersonalFragment;
+import com.zty.archdemo.ui.main.res.ResFragment;
+import com.zty.common.base.BaseFragment;
 
 import java.util.List;
  
-/**
- * 功能：viewpager 添加　fragments 的适配器
- *
- * @author : xww
- * @created at : 19-3-9
- * @time : 下午7:14
- */
-public final class HostFragmentAdapter extends FragmentPagerAdapter {
-    private List<Fragment> mFragments;
- 
-    public HostFragmentAdapter(List<Fragment> fragments, FragmentManager fm) {
-        super(fm);
-        this.mFragments = fragments;
+
+public final class HostFragmentAdapter extends FragmentStateAdapter {
+
+    public HostFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
     }
- 
+
+    @NonNull
     @Override
-    public Fragment getItem(int i) {
-        return mFragments.get(i);
+    public Fragment createFragment(int position) {
+        if (position==0){
+            return new HomeFragment();
+
+        }else if (position==1){
+            return new ResFragment();
+
+        }else if (position==2){
+            return new PersonalFragment();
+
+        }
+
+        return null;
     }
- 
+
     @Override
-    public int getCount() {
-        return mFragments.size();
+    public int getItemCount() {
+        return 3;
     }
 }

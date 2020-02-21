@@ -1,7 +1,6 @@
 package com.zty.archdemo.ui.main.host;
 
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -10,25 +9,18 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.zty.archdemo.ui.main.home.HomeFragment;
-import com.zty.archdemo.ui.main.personal.PersonalFragment;
-import com.zty.archdemo.ui.main.res.ResFragment;
+
 import com.zty.common.base.BaseFragment;
-import com.zty.common.util.BottomNavigationViewHelper;
 import com.zty.oneforall.R;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class HostFragment  extends BaseFragment {
     BottomNavigationView bottomNavigationView;
-    ViewPager mViewPager;
-    List<Fragment> tabList;
+    ViewPager2 mViewPager;
     HostFragmentAdapter hostFragmentAdapter;
 
     @Nullable
@@ -37,24 +29,16 @@ public class HostFragment  extends BaseFragment {
         View view=inflater.inflate(R.layout.fragment_host,container,false);
         bottomNavigationView=view.findViewById(R.id.bottom_navigation);
         mViewPager=view.findViewById(R.id.viewpager);
-        tabList= Arrays.asList(new HomeFragment(),new ResFragment(),new PersonalFragment());
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
+        mViewPager.setOffscreenPageLimit(1);
+        mViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
+                super.onPageSelected(position);
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
 
             }
-
         });
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -73,11 +57,15 @@ public class HostFragment  extends BaseFragment {
                 return false;
             }
         });
-        hostFragmentAdapter = new HostFragmentAdapter(tabList, getChildFragmentManager());
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-//        }
+        hostFragmentAdapter = new HostFragmentAdapter(getChildFragmentManager(),getLifecycle());
         mViewPager.setAdapter(hostFragmentAdapter);
+
+        //取消拉边效果
+        try {
+            mViewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+        } catch (Exception e) {
+
+        }
         return view;
     }
 }
