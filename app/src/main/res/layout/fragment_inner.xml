@@ -5,11 +5,12 @@
 
     <data>
         <variable
-            name="homeViewModel"
-            type="com.zty.archdemo.ui.main.personal.PersonalViewModel" />
+            name="innerViewModel"
+            type="com.zty.archdemo.ui.main.inner.InnerViewModel" />
         <variable
             name="clickProxy"
-            type="com.zty.archdemo.ui.main.personal.PersonalFragment.PersonalFragmentProxy" />
+            type="com.zty.archdemo.ui.main.inner.InnerFragment.InnerFragmentProxy" />
+        <import type="com.zty.archdemo.util.TimeToString"></import>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,16 +18,19 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/inner_text_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Personal" />
-        <Button
-            android:text="隐式跳转"
+            android:onClick="@{()->clickProxy.deeplinkJump()}"
+            />
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:onClick="@{()->clickProxy.deeplinkJump()}"
+            android:text="全清"
+            android:onClick="@{()->clickProxy.popUpAll()}"
             />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

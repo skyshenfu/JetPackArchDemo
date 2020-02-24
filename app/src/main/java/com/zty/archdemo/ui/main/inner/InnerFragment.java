@@ -1,4 +1,4 @@
-package com.zty.archdemo.ui.main.personal;
+package com.zty.archdemo.ui.main.inner;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -8,29 +8,31 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
-import com.zty.archdemo.ui.main.MainActivity;
 import com.zty.archdemo.ui.main.MainHostActivity;
-import com.zty.archdemo.ui.main.res.ResFragment;
+import com.zty.archdemo.ui.main.personal.PersonalFragment;
 import com.zty.common.base.BaseVMFragment;
+import com.zty.oneforall.R;
+import com.zty.oneforall.databinding.FragmentInnerBinding;
 import com.zty.oneforall.databinding.FragmentPersonalBinding;
-import com.zty.oneforall.databinding.FragmentResBinding;
 
-public class PersonalFragment extends BaseVMFragment<PersonalViewModel> {
-    private  PersonalFragmentProxy personalFragmentProxy;
+public class InnerFragment extends BaseVMFragment<InnerViewModel>{
+    private InnerFragmentProxy innerFragmentProxy;
+
     @Override
     protected ViewDataBinding generateDataBinding(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        return FragmentPersonalBinding.inflate(inflater,container,false);
+        return FragmentInnerBinding.inflate(inflater,container,false);
     }
 
     @Override
     protected void setDataForViewModels() {
-        ((FragmentPersonalBinding)mBinding).setHomeViewModel((mViewModel));
-        personalFragmentProxy=new PersonalFragmentProxy();
-        ((FragmentPersonalBinding)mBinding).setClickProxy(personalFragmentProxy);
+        innerFragmentProxy=new InnerFragmentProxy();
+        ((FragmentInnerBinding)mBinding).setClickProxy(innerFragmentProxy);
+        ((FragmentInnerBinding) mBinding).innerTextView.setText(this.toString());
 
     }
 
-    public class PersonalFragmentProxy{
+
+    public class InnerFragmentProxy{
         public void deeplinkJump(){
             ((MainHostActivity)getActivity()).getNavController().navigate(Uri.parse("http://app/innerFragment"));
         }
@@ -38,5 +40,9 @@ public class PersonalFragment extends BaseVMFragment<PersonalViewModel> {
         public void popUp(){
             ((MainHostActivity)getActivity()).getNavController().popBackStack();
         }
+        public void popUpAll(){
+            ((MainHostActivity)getActivity()).getNavController().popBackStack(R.id.host_fragment,false);
+        }
     }
+
 }

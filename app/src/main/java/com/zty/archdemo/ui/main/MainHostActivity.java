@@ -23,4 +23,8 @@ public class MainHostActivity  extends BaseActivity {
         navController = NavHostFragment.findNavController(fragment);
         NavGraphBuilder.build(this, navController, fragment.getId());
     }
+
+    public NavController getNavController() {
+        return navController;
+    }
 }
