@@ -29,6 +29,7 @@ public class ModifyBaseUrlInterceptor implements Interceptor {
             //匹配获得新的BaseUrl，通过domin值，判断这个是哪一个方法需要使用什么baseUrl
             String headerValue = headerValues.get(0);
             HttpUrl newBaseUrl;
+            builder.addHeader("Connection","close");
             newBaseUrl = HttpUrl.parse(NetworkConfig.BASE_URL);
 
             //重建新的HttpUrl，修改需要修改的url部分

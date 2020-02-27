@@ -6,6 +6,9 @@
         <variable
             name="homeViewModel"
             type="com.zty.archdemo.ui.main.home.HomeViewModel" />
+        <variable
+            name="clcikProxy"
+            type="com.zty.archdemo.ui.main.home.HomeFragment.HomeClickProxy" />
     </data>
 
     <FrameLayout
@@ -13,8 +16,10 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/home_text_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="@{()->clcikProxy.clickRequest()}"
             android:text="Home" />
 
     </FrameLayout>

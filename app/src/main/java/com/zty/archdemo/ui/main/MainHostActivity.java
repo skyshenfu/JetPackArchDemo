@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.zty.common.base.BaseActivity;
 import com.zty.common.util.NavGraphBuilder;
 import com.zty.oneforall.R;

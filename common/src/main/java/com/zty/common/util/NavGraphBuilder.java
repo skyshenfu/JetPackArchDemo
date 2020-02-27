@@ -16,7 +16,7 @@ public class NavGraphBuilder {
         NavGraph navGraph = controller.getGraph();
 
         //FragmentNavigator fragmentNavigator = provider.getNavigator(FragmentNavigator.class);
-        //fragment的导航此处使用我们定制的FixFragmentNavigator，底部Tab切换时 使用hide()/show(),而不是replace()
+        //fragment的导航此处使用我们定制的FixFragmentNavigator，切换时 使用hide()/show(),而不是replace()
         FixedFragmentNavigator fragmentNavigator = new FixedFragmentNavigator(activity, activity.getSupportFragmentManager(), containerId);
         provider.addNavigator(fragmentNavigator);
 

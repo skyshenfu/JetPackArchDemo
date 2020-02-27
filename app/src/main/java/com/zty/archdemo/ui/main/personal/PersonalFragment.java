@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
-import com.zty.archdemo.ui.main.MainActivity;
 import com.zty.archdemo.ui.main.MainHostActivity;
 import com.zty.archdemo.ui.main.res.ResFragment;
 import com.zty.common.base.BaseVMFragment;

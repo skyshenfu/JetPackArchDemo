@@ -1,8 +1,7 @@
 package com.zty.archdemo.util;
 
-import com.zty.archdemo.repository.MainRepository;
+import com.zty.archdemo.repository.CenterRepository;
 import com.zty.common.http.service.WanAPI;
-import com.zty.common.http.service.WanService;
 
 public class InjectorRepositoryUtil {
     private static class  InjectorRepositoryUtilHolder{
@@ -13,10 +12,15 @@ public class InjectorRepositoryUtil {
         return InjectorRepositoryUtilHolder.injectorRepositoryUtil;
     }
 
+    private CenterRepository centerRepository;
+
     private InjectorRepositoryUtil(){
 
     }
-    public   MainRepository getWan_Main_Repository(){
-        return  new MainRepository(WanAPI.getInstance());
+    public CenterRepository getCenterRepository(){
+        if (centerRepository==null){
+            centerRepository = new CenterRepository(WanAPI.getInstance());
+        }
+        return centerRepository;
     }
 }
