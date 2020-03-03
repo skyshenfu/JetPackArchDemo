@@ -8,12 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
+import com.zty.archdemo.R;
+import com.zty.archdemo.databinding.FragmentInnerBinding;
 import com.zty.archdemo.ui.main.MainHostActivity;
-import com.zty.archdemo.ui.main.personal.PersonalFragment;
 import com.zty.common.base.BaseVMFragment;
-import com.zty.oneforall.R;
-import com.zty.oneforall.databinding.FragmentInnerBinding;
-import com.zty.oneforall.databinding.FragmentPersonalBinding;
 
 public class InnerFragment extends BaseVMFragment<InnerViewModel>{
     private InnerFragmentProxy innerFragmentProxy;

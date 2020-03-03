@@ -20,9 +20,18 @@ public class ResponseRawBean<T> implements Serializable {
 
     public ResponseRawBean(Throwable throwable) {
         this.throwable = throwable;
+        this.errorMsg=throwable.getMessage();
     }
 
     public ResponseRawBean() {
+    }
+
+    public Throwable getThrowable() {
+        return throwable;
+    }
+
+    public void setThrowable(Throwable throwable) {
+        this.throwable = throwable;
     }
 
     public ResponseRawBean(T data) {

@@ -33,6 +33,7 @@ public class BaseViewModel extends ViewModel implements LifecycleObserver {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
+
     }
     protected void addDisposable(Disposable disposable) {
         if (this.mCompositeDisposable == null) {

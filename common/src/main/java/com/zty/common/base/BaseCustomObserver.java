@@ -18,7 +18,6 @@ public abstract class BaseCustomObserver<T> implements Observer<T> {
     @Override
     public void onError(Throwable e) {
         if (e instanceof NetBusinessException){
-
         }else{
 
         }

@@ -8,11 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
+import com.zty.archdemo.databinding.FragmentPersonalBinding;
 import com.zty.archdemo.ui.main.MainHostActivity;
-import com.zty.archdemo.ui.main.res.ResFragment;
 import com.zty.common.base.BaseVMFragment;
-import com.zty.oneforall.databinding.FragmentPersonalBinding;
-import com.zty.oneforall.databinding.FragmentResBinding;
 
 public class PersonalFragment extends BaseVMFragment<PersonalViewModel> {
     private  PersonalFragmentProxy personalFragmentProxy;

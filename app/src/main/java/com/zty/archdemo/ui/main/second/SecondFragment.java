@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
+import com.zty.archdemo.databinding.FragmentSecondBinding;
 import com.zty.common.base.BaseVMFragment;
-import com.zty.oneforall.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends BaseVMFragment<SecondViewModel> {
     @Override

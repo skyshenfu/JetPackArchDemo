@@ -3,21 +3,18 @@ package com.zty.archdemo.ui.main.home;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
+
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.zty.archdemo.util.GsonUtils;
+import com.zty.archdemo.databinding.FragmentHomeBinding;
 import com.zty.common.base.BaseVMFragment;
 import com.zty.common.bean.PublicAccountBean;
 import com.zty.common.bean.ResponseRawBean;
-import com.zty.oneforall.databinding.FragmentHomeBinding;
 
 import java.util.List;
-
 
 public class HomeFragment extends BaseVMFragment<HomeViewModel> {
     HomeClickProxy homeClickProxy=new HomeClickProxy();
@@ -43,6 +40,7 @@ public class HomeFragment extends BaseVMFragment<HomeViewModel> {
 
                 }
             });
+          //  mViewModel.getRxPublicAccountInfo();
 //
         }
     }

@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.zty.archdemo"
-        minSdkVersion 16
+        minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -43,6 +44,20 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.1'
     implementation  "androidx.viewpager2:viewpager2:1.0.0"
     implementation project(path: ':common')
+
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation project(path: ':common_ktx')
+
+
+//添加Jetpack中架构组件的依赖，注意viewmodel要添加viewmodel-ktx的依赖
+    implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+//添加Glide的依赖用于图片加载
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+
 
 
 }

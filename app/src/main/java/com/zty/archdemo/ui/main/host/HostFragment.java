@@ -14,8 +14,8 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import com.zty.archdemo.R;
 import com.zty.common.base.BaseFragment;
-import com.zty.oneforall.R;
 
 
 public class HostFragment  extends BaseFragment {

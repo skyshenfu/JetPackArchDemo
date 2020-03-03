@@ -1,7 +1,6 @@
 package com.zty.common.http;
 
 import com.zty.common.http.converter.livedata.LiveDataCallFactory;
-import com.zty.common.http.converter.prepose.CustomBeforeConvertFactory;
 import com.zty.common.http.converter.gson.GsonConverterFactory;
 import com.zty.common.http.converter.scalar.ScalarsConverterFactory;
 import com.zty.common.http.interceptor.ModifyBaseUrlInterceptor;
@@ -35,9 +34,10 @@ public class HttpFactory {
                 // 设置请求的域名，这个是初始的baseUrl
                 .baseUrl("https://192.168.111.1")
                 // 设置解析转换工厂，用自己定义的
-                //.addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(new LiveDataCallFactory())
+                .addCallAdapterFactory( RxJava3CallAdapterFactory.create())
                 .client(client)
                 .build();
         ;

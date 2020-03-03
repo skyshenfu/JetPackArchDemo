@@ -1,11 +1,9 @@
 package com.zty.common.http;
 
 import com.zty.common.base.BaseCustomObserver;
-import com.zty.common.bean.PublicAccountBean;
 import com.zty.common.bean.ResponseRawBean;
 import com.zty.common.http.function.ServerResponseFunc;
 
-import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
