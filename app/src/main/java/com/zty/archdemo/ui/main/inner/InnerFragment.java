@@ -32,14 +32,14 @@ public class InnerFragment extends BaseVMFragment<InnerViewModel>{
 
     public class InnerFragmentProxy{
         public void deeplinkJump(){
-            ((MainHostActivity)getActivity()).getNavController().navigate(Uri.parse("http://app/innerFragment"));
+            ((MainHostActivity)getActivity()).getMyNavController().navigate(Uri.parse("http://app/innerFragment"));
         }
 
         public void popUp(){
-            ((MainHostActivity)getActivity()).getNavController().popBackStack();
+            ((MainHostActivity)getActivity()).getMyNavController().popBackStack();
         }
         public void popUpAll(){
-            ((MainHostActivity)getActivity()).getNavController().popBackStack(R.id.host_fragment,false);
+            ((MainHostActivity)getActivity()).getMyNavController().popBackStack(R.id.host_fragment,false);
         }
     }
 

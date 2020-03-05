@@ -4,8 +4,11 @@
 
     <data>
         <variable
-            name="homeViewModel"
+            name="secondViewModel"
             type="com.zty.archdemo.ui.main.second.SecondViewModel" />
+        <variable
+            name="clickProxy"
+            type="com.zty.archdemo.ui.main.second.SecondFragment.ClickProxy" />
     </data>
 
     <FrameLayout
@@ -13,7 +16,9 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/second_click_text_view"
             android:layout_width="match_parent"
+            android:onClick="@{()->clickProxy.click()}"
             android:layout_height="match_parent"
             android:text="Second" />
 

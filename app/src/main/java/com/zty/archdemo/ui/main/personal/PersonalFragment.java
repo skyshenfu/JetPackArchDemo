@@ -27,13 +27,18 @@ public class PersonalFragment extends BaseVMFragment<PersonalViewModel> {
 
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
     public class PersonalFragmentProxy{
         public void deeplinkJump(){
-            ((MainHostActivity)getActivity()).getNavController().navigate(Uri.parse("http://app/innerFragment"));
+            ((MainHostActivity)getActivity()).getMyNavController().navigate(Uri.parse("http://app/innerFragment"));
         }
 
         public void popUp(){
-            ((MainHostActivity)getActivity()).getNavController().popBackStack();
+            ((MainHostActivity)getActivity()).getMyNavController().popBackStack();
         }
     }
 }

@@ -12,7 +12,7 @@ import com.zty.common.base.BaseActivity;
 import com.zty.common.util.NavGraphBuilder;
 
 public class MainHostActivity  extends BaseActivity {
-    private NavController navController;
+    private NavController mNavController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,11 +20,11 @@ public class MainHostActivity  extends BaseActivity {
 
         setContentView(R.layout.activity_main_host);
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.my_nav_host_fragment);
-        navController = NavHostFragment.findNavController(fragment);
-        NavGraphBuilder.build(this, navController, fragment.getId());
+        mNavController = NavHostFragment.findNavController(fragment);
+        NavGraphBuilder.build(this, mNavController, fragment.getId());
     }
 
-    public NavController getNavController() {
-        return navController;
+    public NavController getMyNavController() {
+        return mNavController;
     }
 }
