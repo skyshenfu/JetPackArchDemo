@@ -7,8 +7,13 @@
 package com.zty.common.base;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModelProvider;
 
 
@@ -24,12 +29,17 @@ import java.lang.reflect.Type;
  */
 public abstract class BaseVMActivity<VM extends BaseViewModel> extends  BaseActivity {
     protected VM mViewModel;
+    protected ViewDataBinding mBinding;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initViewModel();
-        initDataBinding();
+        mBinding=generateDataBinding();
+        setDataForViewModels();
+        afterOnCreate();
 
     }
 
@@ -40,7 +50,10 @@ public abstract class BaseVMActivity<VM extends BaseViewModel> extends  BaseActi
          getLifecycle().addObserver(mViewModel);
         }
     }
-    protected abstract void initDataBinding();
+    protected abstract ViewDataBinding generateDataBinding();
+    protected abstract void setDataForViewModels();
+
+    protected void afterOnCreate(){}
 
 
     @Override

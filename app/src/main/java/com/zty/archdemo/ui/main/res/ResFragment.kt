@@ -1,5 +1,6 @@
 package com.zty.archdemo.ui.main.res
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import com.zty.archdemo.R
 
 import com.zty.archdemo.databinding.FragmentResBinding
 import com.zty.archdemo.ui.main.MainHostActivity
+import com.zty.archdemo.ui.main.another.AnotherActivity
 import com.zty.common.base.BaseVMFragment
 import com.zty.common.bus.LiveDataBus
 import com.zty.common.http.download.DownloadListener
@@ -103,7 +105,8 @@ class ResFragment : BaseVMFragment<ResViewModel>() {
 //            )
 
             //跳转
-           (activity as MainHostActivity).myNavController.navigate(R.id.action_fragment_host_to_fragment_second)
+        //   (activity as MainHostActivity).myNavController.navigate(R.id.action_fragment_host_to_fragment_second)
+            startActivity(Intent(context,AnotherActivity::class.java))
         }
     }
 
