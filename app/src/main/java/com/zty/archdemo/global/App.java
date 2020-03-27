@@ -6,16 +6,9 @@
  */
 package com.zty.archdemo.global;
 
-import android.app.Activity;
-import android.app.Application;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.blankj.utilcode.util.Utils;
+import com.zty.common.base.BaseApplication;
 
 /**
  * @ClassName: App
@@ -23,7 +16,7 @@ import com.blankj.utilcode.util.Utils;
  * @Author: zty
  * @Date: 2020/3/13 2:11 PM
  */
-public class App  extends Application  {
+public class App  extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
