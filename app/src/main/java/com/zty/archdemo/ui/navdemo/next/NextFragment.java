@@ -7,15 +7,35 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.LiveData;
 
 import com.zty.archdemo.R;
+import com.zty.archdemo.databinding.FragmentListBinding;
+import com.zty.archdemo.databinding.FragmentNextBinding;
 import com.zty.common.base.BaseFragment;
+import com.zty.common.base.BaseVMFragment;
+import com.zty.common.base.BaseViewModel;
+import com.zty.common.bus.LiveDataBus;
 
-public class NextFragment extends BaseFragment {
-    @Nullable
+import java.util.Random;
+
+public class NextFragment extends BaseVMFragment<BaseViewModel> {
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.fragment_next,container,false);
-        return rootView;
+    protected ViewDataBinding generateDataBinding(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        return FragmentNextBinding.inflate(inflater,container,false);
+    }
+
+    @Override
+    protected void setDataForViewModels() {
+        ((FragmentNextBinding)mBinding).setClickProxy(new NextFragmentClickProxy());
+    }
+
+    public class NextFragmentClickProxy{
+        public void sendData(){
+            Integer a=new Integer(new Random().nextInt());
+            LiveDataBus.get().with("ZTY").postStickyData(a);
+        }
     }
 }
