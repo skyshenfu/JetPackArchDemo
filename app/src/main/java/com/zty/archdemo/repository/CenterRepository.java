@@ -9,6 +9,7 @@ import com.zty.common.http.service.WanAPI;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
+import retrofit2.Call;
 
 public class CenterRepository {
     private WanAPI netWorkInstance;
@@ -24,5 +25,9 @@ public class CenterRepository {
 
     public Observable<ResponseRawBean<List<PublicAccountBean>>> getRxPublicAccount(){
         return netWorkInstance.getRxPublicAccount();
+    }
+
+    public Call<ResponseRawBean<List<PublicAccountBean>>> getCallPublicAccount(){
+        return netWorkInstance.getCallPublicAccount();
     }
 }

@@ -47,16 +47,19 @@ public class LiveDataBus {
     }
 
     private ConcurrentHashMap<String, StickyLiveData> mHashMap = new ConcurrentHashMap<>();
-
     public StickyLiveData with(String eventName) {
         StickyLiveData liveData = mHashMap.get(eventName);
         if (liveData == null) {
             liveData = new StickyLiveData(eventName);
-            mHashMap.put(eventName, liveData);
+               wrapperPut(eventName,liveData);
         }
         return liveData;
     }
+    @SuppressWarnings("uncheck")
+    private void wrapperPut(String eventName,StickyLiveData liveData){
+        mHashMap.put(eventName, liveData);
 
+    }
     /**
      * 实际上liveData黏性事件总线的实现方式 还有另外一套实现方式。
      * 一堆反射 获取LiveData的mVersion字段，来控制数据的分发与否，不够优雅。
@@ -83,7 +86,6 @@ public class LiveDataBus {
             mVersion++;
             super.setValue(value);
         }
-
         @Override
         public void postValue(T value) {
             mVersion++;

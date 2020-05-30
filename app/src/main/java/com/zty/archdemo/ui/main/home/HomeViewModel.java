@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.zty.archdemo.repository.CenterRepository;
+import com.zty.archdemo.usecase.AccountUseCase;
 import com.zty.archdemo.util.InjectorRepositoryUtil;
 import com.zty.common.base.BaseCustomObserver;
 import com.zty.common.base.BaseViewModel;
@@ -18,9 +19,27 @@ import io.reactivex.rxjava3.disposables.Disposable;
 
 public class HomeViewModel extends BaseViewModel {
     private CenterRepository centerRepository;
+    private AccountUseCase accountUseCase;
 
     public HomeViewModel() {
         centerRepository = InjectorRepositoryUtil.getInstance().getCenterRepository();
+        accountUseCase=new AccountUseCase();
+    }
+
+    public MutableLiveData<ResponseRawBean<List<PublicAccountBean>>> getCancelAccount() {
+        return accountUseCase.getmLiveData();
+    }
+
+    public void cancelRequest(){
+        if (accountUseCase!=null){
+            accountUseCase.cancelRequest();
+        }
+    }
+
+    public void requestData(){
+        if (accountUseCase!=null){
+            accountUseCase.requestData();
+        }
     }
 
     public MutableLiveData<ResponseRawBean<List<PublicAccountBean>>> getAccount() {
@@ -49,5 +68,12 @@ public class HomeViewModel extends BaseViewModel {
 
         );
 
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        Log.e("TAG", "VM清理");
+        cancelRequest();
     }
 }

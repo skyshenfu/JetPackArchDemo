@@ -123,7 +123,7 @@ class ResFragment : BaseVMFragment<ResViewModel>() {
     }
     override fun onDestroy() {
         super.onDestroy()
-        call.cancel()
+//        call.cancel()
 
     }
 }

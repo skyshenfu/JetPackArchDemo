@@ -5,8 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.zty.archdemo.databinding.FragmentHomeBinding;
@@ -31,17 +33,26 @@ public class HomeFragment extends BaseVMFragment<HomeViewModel> {
         ((FragmentHomeBinding)mBinding).setClcikProxy(homeClickProxy);
     }
 
+    @Override
+    protected void afterViewCreated(View view, Bundle savedInstanceState) {
+        super.afterViewCreated(view, savedInstanceState);
+        mViewModel.getCancelAccount().observe(getViewLifecycleOwner(), listResponseRawBean -> {
+            ResponseRawBean<List<PublicAccountBean>> mListResponseRawBean =listResponseRawBean;
+            if (mListResponseRawBean.getData()==null){
+                Log.e("TAG", "onChanged: 1");
+
+            }else{
+                Log.e("TAG", "onChanged: 2");
+            }
+        });
+    }
+
     public class HomeClickProxy{
         public void clickRequest(){
-            mViewModel.getAccount().observe(getViewLifecycleOwner(), listResponseRawBean -> {
-                ResponseRawBean<List<PublicAccountBean>> mListResponseRawBean =listResponseRawBean;
-                if (mListResponseRawBean.getData()==null){
-                    Log.e("TAG", "onChanged: ");
-
-                }
-            });
-          //  mViewModel.getRxPublicAccountInfo();
-//
+            mViewModel.requestData();
+        }
+        public void clickCancel(){
+            mViewModel.cancelRequest();
         }
     }
 }

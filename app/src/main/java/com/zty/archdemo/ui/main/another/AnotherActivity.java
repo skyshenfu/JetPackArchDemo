@@ -31,7 +31,7 @@ public class AnotherActivity extends BaseVMActivity<AnotherViewModel> {
         public  void click(){
             int temp=new Random().nextInt(300);
             Log.e("TAG", "click: "+temp);
-            LiveDataBus.get().with("MCTianYi").postValue(new Integer(temp));
+            LiveDataBus.get().with("MCTianYi").postValue(temp);
         }
     }
 }

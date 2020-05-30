@@ -12,15 +12,19 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity android:name="com.zty.archdemo.ui.main.MainHostActivity">
-
-        </activity>
-        <activity android:name=".ui.main.another.AnotherActivity" />
-        <activity android:name=".ui.navdemo.NavMainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.main.another.AnotherActivity" />
+        <activity android:name=".ui.FirstActivity" >
+        </activity>
+        <activity android:name=".ui.SecondActivity" />
+
+        <activity android:name=".ui.navdemo.NavMainActivity" >
+
         </activity>
     </application>
 

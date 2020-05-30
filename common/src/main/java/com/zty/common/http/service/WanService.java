@@ -10,6 +10,7 @@ import com.zty.common.http.NetworkConfig;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 
@@ -23,5 +24,8 @@ public interface WanService {
     MutableLiveData<ResponseRawBean<List<PublicAccountBean>>> getLiveDataPublicAccount();
 
 
+    @Headers(NetworkConfig.DOMAIN_HOLDER_WHOLE)
+    @GET("wxarticle/chapters/json")
+    Call<ResponseRawBean<List<PublicAccountBean>>> getCallPublicAccount();
 }
 

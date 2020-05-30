@@ -9,6 +9,7 @@ import com.zty.common.http.HttpFactory;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
+import retrofit2.Call;
 
 public class WanAPI {
 
@@ -30,6 +31,10 @@ public class WanAPI {
     }
     public Observable<ResponseRawBean<List<PublicAccountBean>>> getRxPublicAccount(){
         return wanService.getRxPublicAccount();
+    }
+
+    public Call<ResponseRawBean<List<PublicAccountBean>>> getCallPublicAccount(){
+        return wanService.getCallPublicAccount();
     }
 
 }
